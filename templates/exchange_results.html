@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+
+
+
+{% block content %}
+<header class="hero-img photo">
+    <div class="container choice photo2">
+
+        <!-- {% for a in get_flashed_messages() %}
+            <div>{{ a }}</div>
+        {% endfor %} -->
+
+        {% if records == 'Świata' %}
+            <img src="{{ url_for('static', filename=records_info.photo) }}" class="mx-auto d-block photo3">
+            <div class="podpis">
+                {{ records_info.name }} - Rekord Świata na dystansie {{ records_info.code }}, czas {{ records_info.time }}.
+            </div>
+            <div class="btn_wroc">
+                <a href="{{ url_for('record') }}" class="btn btn-outline-light mt-2 text-uppercase">Wróc</a> 
+            </div>
+        {% elif records == 'Polski' %}
+            <img src="{{ url_for('static', filename=records_info.photo_pl) }}" class="mx-auto d-block photo3">
+            <div class="podpis">
+                {{ records_info.name_pl }} - Rekord Polski na dystansie {{ records_info.code }}, czas {{ records_info.time_pl }}.
+            </div>
+            <div class="btn_wroc">
+                <a href="{{ url_for('record') }}" class="btn btn-outline-light mt-2 text-uppercase">Wróc</a> 
+            </div>
+
+        {% endif %}
+    </div>
+    <div class="hero-shadow"></div>
+</header>
+
+
+
+{% endblock %}

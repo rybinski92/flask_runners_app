@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}
+Reserch`s history
+{% endblock %}
+
+{% block content %}
+
+<!-- Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">This entry will be deleted: </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="idDeleteModalBody">
+                ...
+            </div>
+            <div class="modal-footer">
+                <form action="" method="GET" id="confirmDeleteForm">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.delete-confirm').click(function () {
+            var desc = $(this).attr('data-desc');
+            var url = $(this).attr('data-url');
+
+            $('#idDeleteModalBody').text(desc);
+            $('#confirmDeleteForm').attr('action', url)
+        });
+    });
+</script>
+
+
+<header class="hero-img">
+    <div class="container history">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Distans</th>
+                    <th scope="col">Records</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in reserch2 %}
+                <tr>
+                    <th scope="row">{{ i.id }}</th>
+                    <td>{{ i.distans }}</td>
+                    <td>{{ i.records }}</td>
+                    <td>{{ i.date_run }}</td>
+                    <td>
+                        
+
+                        <a type="button" class="btn btn-danger btn-sm delete-confirm" data-bs-toggle="modal"
+                            data-bs-target="#confirmDeleteModal"
+                            data-desc="{{ 'Delete transaction for {} {} ({})?'.format(i.distans, i.records, i.date_run) }}"
+                            data-url="{{ url_for('delete_reserch', reserch_id=i.id) }}">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    <div class="hero-shadow"></div>
+</header>
+{% endblock %}

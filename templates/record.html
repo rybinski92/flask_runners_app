@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+<header class="hero-img">
+    <div class="container choice">
+        <div class="row justify-content-start">
+            <div class="col-5 h1">Rekordy Polski i Świata</div>
+        </div>
+        <form id="exchange_form" action="{{ url_for('record') }}" method="POST">
+
+            <div class="row justify-content-start">
+                <div class="col-1 col-form-label"><label for="distans">Dystans</label></div>
+                <div class="col-4">
+                    <select id="distans" name="distans" class="form-select">
+                        {% for distans in offer.world %}
+                        <option value="{{ distans.code }}">{{ distans.code }}</option>
+                        {% endfor %}
+                    </select><br>
+                </div>
+            </div>
+
+            <div class="row justify-content-start">
+                <div class="col-1 col-form-label"><label for="records">Wybierz rekord</label></div>
+                <div class="col-4">
+                    <select id="records" name="records" class="form-select">
+                        {% for records in offer.desti %}
+                        <option value="{{ records.destination }}">{{ records.destination }}</option>
+                        {% endfor %}
+                    </select><br>
+                </div>
+            </div>
+            <div class="row justify-content-start">
+                <div class="col-1"></div>
+                <div class="col-2"><input type="submit" value="Send" class="btn btn-primary"></div>
+            </div>
+        </form>
+    </div>
+    <div class="hero-shadow"></div>
+</header>
+{% endblock %}

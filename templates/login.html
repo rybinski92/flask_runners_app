@@ -1,0 +1,40 @@
+{% extends "base.html" %} 
+{% block title %}Logon{% endblock %} 
+
+{% block content %} 
+<header class="hero-img">
+    <div class="container choice"> 
+        <form method="POST" action={{url_for('login')}}> 
+            <div class="row mt-3"> 
+                <div class="col-6 h1">Login</div> 
+            </div> 
+            
+            <div class="row mt-3"> 
+                <div class="col-2 col-form-label"><label for="user_name">User name</label></div> 
+                <div class="col-4"> 
+                    <input type="text" id="user_name" name="user_name" class="form-control"> 
+                </div> 
+            </div> 
+            
+            <div class="row mt-3"> 
+                <div class="col-2 col-form-label"><label for="user_pas">Password</label></div> 
+                <div class="col-4"> 
+                    <input type="password" id="user_pass" name="user_pass" class="form-control"> 
+                </div> 
+            </div> 
+            
+            <div class="row mt-3"> 
+                <div class="col-2"></div> 
+                <div class="col-4"><input type="submit" value="Login" class="btn btn-primary"></div> 
+            </div> 
+        </form> 
+        <br>
+        <br>
+        <div>
+            <p>Kliknij poniżej, aby założyć konto.</p>
+            <a href="{{ url_for('new_user') }}" class="btn btn-outline-light mt-2 text-uppercase">Załóż konto</a>
+        </div>
+    </div> 
+    <div class="hero-shadow"></div>
+</header>
+{% endblock %}

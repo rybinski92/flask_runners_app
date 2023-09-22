@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+ProRunners
+{% endblock %}
+
+
+
+{% block content %}
+
+<header class="hero-img">
+    <div class="hero-text text-center p-2">
+        <h1>witajcie w <i class="fa-solid fa-person-running"></i> pro<span class="blue-text">runners</span></h1>
+        <p>W miejscu, w którym poznasz najlepszych biegaczy</p>
+        <a href="{{ url_for('record') }}" class="btn btn-outline-light mt-2 text-uppercase">Poznaj mistrzów</a>
+    </div>
+    <div class="hero-shadow"></div>
+</header>
+
+{% endblock %}
